@@ -1,59 +1,49 @@
-package Exercise1;
+package Exercise2;
 
-/**
- * The Circle class models a circle with a radius and color.
- */
-public class Circle {
-    // Private instance variables
+public class Circle extends Shape {
+    // Variabel instance tambahan
     private double radius;
-    private String color;
 
-    // 1st constructor: Constructs a Circle instance with default radius and color
+    // Konstruktor tanpa argumen
     public Circle() {
-        radius = 1.0;
-        color = "red";
+        super();
+        this.radius = 1.0;
     }
 
-    // 2nd constructor: Constructs a Circle instance with the given radius and default color
+    // Konstruktor dengan radius
     public Circle(double radius) {
+        super();
         this.radius = radius;
-        color = "red";
     }
 
-    // 3rd constructor: Constructs a Circle instance with the given radius and color
-    public Circle(double radius, String color) {
+    // Konstruktor dengan radius, color, dan filled
+    public Circle(double radius, String color, boolean filled) {
+        super(color, filled);
         this.radius = radius;
-        this.color = color;
     }
 
-    // Getter for radius
+    // Getter dan setter untuk radius
     public double getRadius() {
         return radius;
     }
 
-    // Setter for radius
     public void setRadius(double radius) {
         this.radius = radius;
     }
 
-    // Getter for color
-    public String getColor() {
-        return color;
-    }
-
-    // Setter for color
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    // Returns the area of this circle
+    // Metode untuk menghitung area
     public double getArea() {
-        return radius * radius * Math.PI;
+        return Math.PI * radius * radius;
     }
 
-    // Returns a self-descriptive string of this instance in the form of Circle[radius=?,color=?]
+    // Metode untuk menghitung perimeter
+    public double getPerimeter() {
+        return 2 * Math.PI * radius;
+    }
+
+    // Override metode toString
     @Override
     public String toString() {
-        return "Circle[radius=" + radius + ",color=" + color + "]";
+        return "A Circle with radius=" + radius + ", which is a subclass of " + super.toString();
     }
 }
