@@ -1,37 +1,40 @@
-package Exercise3;
+package StudiKasus1;
 
-class Employee extends Sortable {
-    private String name;
-    private double salary;
-    private int hireday;
-    private int hiremonth;
-    private int hireyear;
+//***********************************************************************************//
+//  Employee.java             Author : Lewis/Loftus
+//
+// Represents a general paid employee.
+//***********************************************************************************//
 
-    public Employee(String n, double s, int day, int month, int year) {
-        name = n;
-        salary = s;
-        hireday = day;
-        hiremonth = month;
-        hireyear = year;
+public class Employee extends StaffMember
+{
+    protected String socialSecurityNumber;
+    protected double payRate;
+
+    //-------------------------------------------------------------------------------
+    //Stets up an employee with specified information.
+    //-------------------------------------------------------------------------------
+    public Employee(String eName, String eAddress, String ePhone, String socSecNumber, double rate)
+    {
+        super(eName, eAddress, ePhone);
+
+        socialSecurityNumber = socSecNumber;
+        payRate = rate;
+}
+    //-------------------------------------------------------------------------------
+    //Return information about an employee as a string.
+    //-------------------------------------------------------------------------------
+    public String toString() {
+        String result = super.toString();
+        result += "\nSocial Security Number: " + socialSecurityNumber;
+        return result;
     }
 
-    public void print() {
-        System.out.println(name + " " + salary + " " + hireYear());
-    }
-
-    public void raiseSalary(double byPercent) {
-        salary *= 1 + byPercent / 100;
-    }
-
-    public int hireYear() {
-        return hireyear;
-    }
-
-    // Implementasi metode compare
-    public int compare(Sortable b) {
-        Employee eb = (Employee) b;
-        if (this.salary < eb.salary) return -1;
-        if (this.salary > eb.salary) return 1;
-        return 0;
+    //-------------------------------------------------------------------------------
+    //Return the pay rate for this employee.
+    //-------------------------------------------------------------------------------
+    public double pay()
+    {
+        return payRate;
     }
 }
